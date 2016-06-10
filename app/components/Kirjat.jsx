@@ -19,18 +19,19 @@ var Kirjat = React.createClass({
       records: undefined
     });
     
-    if (apiFinna.getBooks()) {
+    apiFinna.getBooks().then(function (data) {
+        debugger;
       that.setState({
         isLoading: false,
-        records: result
+        records: data.records
       });
-    } else {
+    }, function (e) {
       that.setState({
         isLoading: false,
-        errorMessage: 'Error',
+        errorMessage: e.message,
         records: undefined
       });
-    }
+    })
   },
   render: function () {
     var {isLoading, records} = this.state;
