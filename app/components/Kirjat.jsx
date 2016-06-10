@@ -4,27 +4,45 @@ var Filters = require('Filters');
 var apiFinna = require('apiFinna');
 
 var Kirjat = React.createClass({
-  handleSearch: function (location) {
+  getInitialState: function () {
+    return {
+      isLoading : false,
+      records: undefined
+    };
+  },
+  handleSearch: function () {
     var that = this;
         
 //    debugger; //breakpoint
     this.setState({
       isLoading: true,
-      errorMessage: undefined
+      records: undefined
     });
     
     if (apiFinna.getBooks()) {
       that.setState({
-        isLoading: false
+        isLoading: false,
+        records: result
       });
     } else {
       that.setState({
         isLoading: false,
-        errorMessage: 'Error'
+        errorMessage: 'Error',
+        records: undefined
       });
     }
   },
   render: function () {
+    var {isLoading, records} = this.state;
+
+    if (records) {
+        for (var index = 0; index < records.length; ++index) {
+            console.log(records[index].nonPresenterAuthors[0].name +
+                ': ' + records[index].title);
+        }
+    }
+
+    
     return (
         < div >
             < Filters onSearch={this.handleSearch}/>
