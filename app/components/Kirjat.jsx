@@ -1,6 +1,7 @@
 var React = require('react');
 var {Link} = require('react-router');
 var Filters = require('Filters');
+var ResultList = require('ResultList');
 var apiFinna = require('apiFinna');
 
 var Kirjat = React.createClass({
@@ -20,7 +21,6 @@ var Kirjat = React.createClass({
     });
     
     apiFinna.getBooks().then(function (data) {
-        debugger;
       that.setState({
         isLoading: false,
         records: data.records
@@ -36,27 +36,19 @@ var Kirjat = React.createClass({
   render: function () {
     var {isLoading, records} = this.state;
 
-    if (records) {
-        for (var index = 0; index < records.length; ++index) {
-            console.log(records[index].nonPresenterAuthors[0].name +
-                ': ' + records[index].title);
-        }
+    function renderList (){
+      if (isLoading) {
+        return <h3 className="text-center">Haetaan tietoja...</h3>;
+      } else if (records) {
+        return <ResultList records={records}/>;
+      }
     }
-
     
     return (
         < div >
             < Filters onSearch={this.handleSearch}/>
             < h1 className = "text-center page-title" > Kirjat < /h1>
-            < p > Example locations to try out! < /p>
-            < ol >
-                < li >
-                    < Link to = '/?location=Turku' > Turku, Finland < /Link>
-                < /li>
-                < li >
-                    < Link to = '/?location=Stockholm' > Stockholm, Sweden < /Link>
-                < /li>
-            < /ol>
+            {renderList()}
         < /div>
     )
   }

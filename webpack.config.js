@@ -26,7 +26,7 @@ module.exports = {
       Nav: 'app/components/Nav.jsx',
       Aloitus: 'app/components/Aloitus.jsx',
       Filters: 'app/components/Filters.jsx',
-      WeatherMessage: 'app/components/WeatherMessage.jsx',
+      ResultList: 'app/components/ResultList.jsx',
       Kirjat: 'app/components/Kirjat.jsx',
       Elokuvat: 'app/components/Elokuvat.jsx',
       ErrorModal: 'app/components/ErrorModal.jsx',

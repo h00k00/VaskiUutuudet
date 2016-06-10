@@ -1,5 +1,4 @@
 var React = require('react');
-var WeatherMessage = require('WeatherMessage');
 var Filters = require('Filters');
 var ErrorModal = require('ErrorModal');
 var apiFinna = require('apiFinna');
@@ -33,7 +32,7 @@ var Aloitus = React.createClass({
       if (isLoading) {
         return <h3 className="text-center">Fetching weather...</h3>;
       } else if (temp && location) {
-        return <WeatherMessage location={location} temp={temp}/>;
+        return <p></p>;
       }
     }
     
