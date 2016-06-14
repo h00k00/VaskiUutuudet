@@ -3,7 +3,7 @@ var Filters = require('Filters');
 var ResultList = require('ResultList');
 var apiFinna = require('apiFinna');
 
-var Kirjat = React.createClass({
+var Ekirjat = React.createClass({
   getInitialState: function () {
     return {
       isLoading : false,
@@ -19,7 +19,7 @@ var Kirjat = React.createClass({
       records: undefined
     });
     
-    apiFinna.getBooks('book').then(function (data) {
+    apiFinna.getBooks('ebook').then(function (data) {
       that.setState({
         isLoading: false,
         records: data.records
@@ -53,15 +53,29 @@ var Kirjat = React.createClass({
   }
 });
 
-module.exports = Kirjat;
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-    
-   
- 
+module.exports = Ekirjat;
+
+                               
+                               
+                               
+                               
+
+                               
+                               
+                               
+                               
+                               
+                               
+                      
+
+                               
+                               
+                               
+                               
+                               
+                               
+                               
+
+                              
+                               
+

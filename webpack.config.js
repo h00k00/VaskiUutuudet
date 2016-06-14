@@ -28,7 +28,7 @@ module.exports = {
       Filters: 'app/components/Filters.jsx',
       ResultList: 'app/components/ResultList.jsx',
       Kirjat: 'app/components/Kirjat.jsx',
-      Elokuvat: 'app/components/Elokuvat.jsx',
+      Ekirjat: 'app/components/Ekirjat.jsx',
       ErrorModal: 'app/components/ErrorModal.jsx',
       apiFinna: 'app/api/apiFinna.jsx',
       applicationStyles: 'app/styles/app.css'

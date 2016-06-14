@@ -21,7 +21,7 @@ var Nav = React.createClass({
             <li className="menu-text">Vaski uutuudet</li>
             <li><IndexLink to="/" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Aloitus</IndexLink></li>
             <li><Link to="kirjat" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Kirjat</Link></li>
-            <li><Link to="elokuvat" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Elokuvat</Link></li>
+            <li><Link to="ekirjat" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>eKirjat</Link></li>
           </ul>
         </div>
       </div>
