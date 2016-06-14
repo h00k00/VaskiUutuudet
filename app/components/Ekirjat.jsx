@@ -46,7 +46,7 @@ var Ekirjat = React.createClass({
     return (
         < div >
             < Filters onSearch={this.handleSearch}/>
-            < h1 className = "text-center page-title" > Kirjat < /h1>
+            < h1 className = "text-center page-title" > eKirjat < /h1>
             {renderList()}
         < /div>
     )
