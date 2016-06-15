@@ -1,12 +1,26 @@
 var React = require('react');
 
+var AuthorWrapper = React.createClass({
+    render: function () {
+        if (this.props.data)
+            return <div>{this.props.data[0].name}</div>
+        else
+            return <div></div>
+    }
+});
+
 var ItemWrapper = React.createClass({
     render: function () {
+        var imageSrc = '';
+        if (this.props.data.images != undefined) {
+            imageSrc = 'https://api.finna.fi' + this.props.data.images[0];
+        }
         return <tr>
-            <td>
-            {this.props.data.nonPresenterAuthors[0].name}
+            <td><img src={imageSrc} className="cover"/></td>
+            <td className="book-author">
+            <AuthorWrapper data = {this.props.data.nonPresenterAuthors}/>
             </td>
-            <td>{this.props.data.title}</td>
+            <td className="book-title">{this.props.data.title}</td>
             </tr>
     }
 });
@@ -18,8 +32,9 @@ var ResultList = ({records}) => {
                 <table>
                     <thead>
                         <tr>
-                            <th>Kirjailija</th>
-                            <th>Teos</th>
+                            <th></th>
+                            <th><h3>Kirjailija</h3></th>
+                            <th><h3>Teos</h3></th>
                         </tr>
                     </thead>
                     <tbody>

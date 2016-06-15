@@ -12,3 +12,15 @@
 input[type=search] {
   box-shadow: none;
 }
+
+.cover {
+    width: 40%;
+}
+
+.book-author {
+    font-size: 1.3rem;
+}
+
+.book-title {
+    font-size: 1.3rem;
+}

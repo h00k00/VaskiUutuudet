@@ -4,27 +4,20 @@ var Filters = React.createClass({
     onFormSubmit: function (e) {
         e.preventDefault();
         switch (this.state.typeOfSubmit) {
-            case 'dekkarit':
-                this.props.onSearch(location);
+            case 'kaikki':
+                this.props.onSearch();
                 break;
             case 'spefi':
-                this.props.onSearch(location);
+                this.props.onSearch();
                 break;
-            case 'allTypes':
-                this.props.onSearch(location);
+            case 'suomi':
+                this.props.filterResults();
                 break;
         }
-        
-//        var location = this.refs.location.value;
-              
-//        if (typeof location == 'string' && location.length > 0) {
-//            this.refs.location.value = '';
-//            this.props.onSearch(location);
-//        }
     },
-    submitThrillers: function () {
+    submitAll: function () {
       this.setState({
-        typeOfSubmit: 'dekkarit'
+        typeOfSubmit: 'kaikki'
       }, this.refs.form.onFormSubmit);
     },
     submitSpefi: function () {
@@ -32,9 +25,9 @@ var Filters = React.createClass({
         typeOfSubmit: 'spefi'
       }, this.refs.form.onFormSubmit);
     },
-    submitAllTypes: function () {
+    submitFinnish: function () {
       this.setState({
-        typeOfSubmit: 'allTypes'
+        typeOfSubmit: 'suomi'
       }, this.refs.form.onFormSubmit);
     },
     render: function () {
@@ -43,13 +36,13 @@ var Filters = React.createClass({
                 <form onSubmit={this.onFormSubmit} ref="form">
                     <div className="row">
                         <div className="columns medium-4 small-2">
-                            <input onClick={this.submitThrillers} type="submit" className="button hollow expanded" value="Dekkarit"/>
+                            <input onClick={this.submitAll} type="submit" className="button hollow expanded" value="Kaikki"/>
                         </div>
                         <div className="columns medium-4 small-2">
                             <input onClick={this.submitSpefi} type="submit" className="button hollow expanded" value="Spefi"/>
                         </div>
                         <div className="columns medium-4 small-2">
-                            <input onClick={this.submitAllTypes} type="submit" className="button hollow expanded"value="Sekalaiset"/>
+                            <input onClick={this.submitFinnish} type="submit" className="button hollow expanded"value="Vain suomenkieliset"/>
                         </div>
                     </div>
                 </form>

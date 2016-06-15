@@ -1,29 +1,28 @@
 var jQuery = require('jquery');
 
 const FINNA_API_BASE_URL = 'https://api.finna.fi/v1/search?';
-const FINNA_API_URL = 'https://api.finna.fi/v1/search?type=AllFields&filter[]=~building:"0/Vaski/&filter[]=search_daterange_mv:"[2016 TO 2016]"&filter[]=~format:"1/Book/eBook/"&filter[]=~major_genre_str_mv:"fiction"&sort=main_date_str desc&limit=40';
 
-var params = {
+const PARAMS = {
     type: 'AllFields',
-    limit: 40,
-    filter: ['~building:0/Vaski/', '~language:fin', 'search_daterange_mv:[2016 TO 2016]', '~major_genre_str_mv:fiction'],
-    sort: 'main_date_str desc'
+    limit: 100,
+    filter: ['first_indexed:[NOW-1MONTHS/DAY TO NOW]', '~major_genre_str_mv:fiction'],
+    sort: 'last_indexed desc'
 };
 
 module.exports = {
     getBooks: function(type) {
-        var requestUrl = `${FINNA_API_URL}`;
-        var searchParams = params;
+        var requestUrl = `${FINNA_API_BASE_URL}` + $.param(PARAMS);
 
         switch (type) {
             case 'book':
-                searchParams.filter.push('~format:1/Book/Book/');
+                requestUrl += '&filter[]=~building:1/Vaski/1/&filter[]=~format:1/Book/Book/';
                 break;
             case 'ebook':
-                searchParams.filter.push('~format:1/Book/eBook/');
+                requestUrl += '&filter[]=~building:0/Vaski/&filter[]=~format:1/Book/eBook/';
+                break;
+            case 'all':
                 break;
         }
-//        var requestUrl = `${FINNA_API_BASE_URL}` + $.param(searchParams);
 
         return $.ajax({
             url: requestUrl,
