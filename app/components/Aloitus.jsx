@@ -1,5 +1,4 @@
 var React = require('react');
-var Filters = require('Filters');
 var ErrorModal = require('ErrorModal');
 var apiFinna = require('apiFinna');
 
@@ -54,48 +53,4 @@ var Aloitus = React.createClass({
   }
 })
                                          ;
-
 module.exports = Aloitus;
-                                                           
-                                                           
-                                                           
-                                                           
-                                                           
-                                                           
-           
-       
-     
-         
-       
-     
-                               
-           
-       
-     
- 
-     
-                      
-           
-       
-     
-       
-           
-       
-     
-    
-     
-  
-     
-                               
-           
-       
-     
-    
-     
-      
-       
-     
-
-       
-     
-

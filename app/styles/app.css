@@ -24,3 +24,17 @@ input[type=search] {
 .book-title {
     font-size: 1.3rem;
 }
+
+input[type="checkbox"] {
+    width:1.3rem;
+    height:1.3rem;
+}
+.checkbox-text {
+    font-size:1.3rem;
+    margin-left: 5px;
+    margin-right:15px;
+}
+
+body {
+    padding: 20px
+}

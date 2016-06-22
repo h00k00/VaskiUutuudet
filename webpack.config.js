@@ -25,10 +25,8 @@ module.exports = {
       Main: 'app/components/Main.jsx',
       Nav: 'app/components/Nav.jsx',
       Aloitus: 'app/components/Aloitus.jsx',
-      Filters: 'app/components/Filters.jsx',
       ResultList: 'app/components/ResultList.jsx',
-      Kirjat: 'app/components/Kirjat.jsx',
-      Ekirjat: 'app/components/Ekirjat.jsx',
+      Items: 'app/components/Items.jsx',
       ErrorModal: 'app/components/ErrorModal.jsx',
       apiFinna: 'app/api/apiFinna.jsx',
       applicationStyles: 'app/styles/app.css'

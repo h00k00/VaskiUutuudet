@@ -6,7 +6,7 @@ const PARAMS = {
     type: 'AllFields',
     limit: 100,
     filter: ['first_indexed:[NOW-1MONTHS/DAY TO NOW]', '~major_genre_str_mv:fiction'],
-    sort: 'last_indexed desc'
+    sort: 'first_indexed desc'
 };
 
 module.exports = {
@@ -14,11 +14,17 @@ module.exports = {
         var requestUrl = `${FINNA_API_BASE_URL}` + $.param(PARAMS);
 
         switch (type) {
-            case 'book':
+            case 'Kirjat':
                 requestUrl += '&filter[]=~building:1/Vaski/1/&filter[]=~format:1/Book/Book/';
                 break;
-            case 'ebook':
+            case 'eKirjat':
                 requestUrl += '&filter[]=~building:0/Vaski/&filter[]=~format:1/Book/eBook/';
+                break;
+            case 'Spefi':
+                requestUrl += '&lookfor=tieteiskirjallisuus OR fantasiakirjallisuus&filter[]=~building:1/Vaski/1/';
+                break;
+            case 'Sarjakuvat':
+                requestUrl += '&lookfor=sarjakuvat&filter[]=~building:1/Vaski/1/';
                 break;
             case 'all':
                 break;

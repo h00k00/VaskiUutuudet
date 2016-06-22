@@ -20,8 +20,26 @@ var Nav = React.createClass({
           <ul className="menu">
             <li className="menu-text">Vaski uutuudet</li>
             <li><IndexLink to="/" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Aloitus</IndexLink></li>
-            <li><Link to="kirjat" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Kirjat</Link></li>
-            <li><Link to="ekirjat" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>eKirjat</Link></li>
+            <li><Link to="items/Kirjat"
+                    activeClassName="active"
+                    activeStyle={{fontWeight: 'bold'}}>
+                    Kirjat</Link>
+            </li>
+            <li><Link to="items/eKirjat"
+                    activeClassName="active"
+                    activeStyle={{fontWeight: 'bold'}}>
+                    eKirjat</Link>
+            </li>
+            <li><Link to="items/Spefi"
+                    activeClassName="active"
+                    activeStyle={{fontWeight: 'bold'}}>
+                    Spefi</Link>
+            </li>
+            <li><Link to="items/Sarjakuvat"
+                    activeClassName="active"
+                    activeStyle={{fontWeight: 'bold'}}>
+                    Sarjakuvat</Link>
+            </li>
           </ul>
         </div>
       </div>
@@ -30,29 +48,4 @@ var Nav = React.createClass({
 });
 
 module.exports = Nav;
-                                                                                          
-                                             
-                                             
-                                             
-                                             
-                                             
-                                             
-                                             
-                                             
-                                             
-                                             
-                            
-                       
-                                             
-                                             
-                                             
-                                             
-                                             
-                                             
-                                             
-                            
-                 
-       
-
-  
-
+// {{pathname: 'items', query: {item: 'Spefi'}}}

@@ -9,53 +9,136 @@ var AuthorWrapper = React.createClass({
     }
 });
 
-var ItemWrapper = React.createClass({
-    render: function () {
+var BookRow = React.createClass({
+    render: function() {
         var imageSrc = '';
-        if (this.props.data.images != undefined) {
-            imageSrc = 'https://api.finna.fi' + this.props.data.images[0];
+        if (this.props.records.images != undefined) {
+            imageSrc = 'https://api.finna.fi' + this.props.records.images[0];
         }
-        return <tr>
-            <td><img src={imageSrc} className="cover"/></td>
-            <td className="book-author">
-            <AuthorWrapper data = {this.props.data.nonPresenterAuthors}/>
-            </td>
-            <td className="book-title">{this.props.data.title}</td>
-            </tr>
+        var itemUrl = 'https://vaski.finna.fi/Record/' + this.props.records.id;
+        return (
+          <tr>
+                <td><img src={imageSrc} className="cover"/></td>
+                <td className="book-author">
+                <AuthorWrapper data = {this.props.records.nonPresenterAuthors}/>
+                </td>
+                <td className="book-title">
+                    <a target="_blank" href={itemUrl}>
+                        {this.props.records.title}
+                    </a>
+                </td>
+          </tr>
+        );
+  }
+});
+
+var BookTable = React.createClass({
+    getInitialState: function () {
+        return {
+            newData: true,
+        };
+    },
+    componentWillReceiveProps: function(nextProps) {
+        this.setState({
+            newData: true
+        });
+    },
+    componentDidMount: function () {
+        this.setState({
+            newData: false
+        });
+    },
+    render: function() {
+        var rows = [];
+        var lastCategory = null;
+        var {newData} = this.state;
+    
+        function checkLanguage(value) {
+            return value.languages[0] == 'fin';
+        }
+        
+        function checkCategory(category, value) {
+            if (value.subjects != undefined) {
+                return value.subjects.indexOf(category) != -1
+            } else
+            {
+                return false;
+            }
+        }
+    
+        var that = this;
+        this.props.records.forEach(function(records) {
+            if (that.props.finnishOnly && !checkLanguage(records) && !newData) {
+                return;
+            }
+            rows.push(<BookRow records={records} key={records.id} />);
+        });
+        return (
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th><h3>Kirjailija</h3></th>
+                        <th><h3>Teos</h3></th>
+                    </tr>
+                </thead>
+                <tbody>{rows}</tbody>
+            </table>
+        );
     }
 });
 
-var ResultList = ({records}) => {
-    if (records) {
+var FilterBar = React.createClass({
+    handleChange: function () {
+        this.props.onUserInput(
+            this.refs.finnishOnly.checked
+        )
+    },
+    render: function() {
+        return (
+            <form>
+                <p>
+                    <input
+                        type="checkbox"
+                        checked={this.props.finnishOnly}
+                        ref="finnishOnly"
+                        onChange={this.handleChange}
+                        id="language"
+                    />
+                    <span className="checkbox-text">Vain suomenkieliset</span>
+                </p>
+            </form>
+        );
+    }
+});
+
+var ResultList = React.createClass({
+    getInitialState: function () {
+        return {
+            finnishOnly: false,
+        };
+    },
+    componentWillReceiveProps: function(nextProps) {
+    },
+    componentDidMount: function () {
+    },
+    handleUserInput: function (finnishOnly) {
+        this.setState({
+            finnishOnly: finnishOnly,
+        });
+    },
+    render: function() {
         return (
             <div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th><h3>Kirjailija</h3></th>
-                            <th><h3>Teos</h3></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {records.map(function(records) {
-                        return <ItemWrapper key={records.id} data={records}/>
-                    })}
-                    </tbody>
-                </table>
+                < FilterBar
+                    finnishOnly = {this.state.finnishOnly}
+                    onUserInput = {this.handleUserInput}/>
+                <BookTable
+                    records = {this.props.records}
+                    finnishOnly = {this.state.finnishOnly}/>
             </div>
-        )
-    } else {
-        return;
+        );
     }
-};
+});
 
 module.exports = ResultList;
-                                                               
-                                                            
-                                                                
-                                  
-                                
-                       
-                                                      
-                    
