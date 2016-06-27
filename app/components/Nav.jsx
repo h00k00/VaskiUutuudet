@@ -40,6 +40,16 @@ var Nav = React.createClass({
                     activeStyle={{fontWeight: 'bold'}}>
                     Sarjakuvat</Link>
             </li>
+            <li><Link to="items/Rikos"
+                    activeClassName="active"
+                    activeStyle={{fontWeight: 'bold'}}>
+                    Rikos</Link>
+            </li>
+            <li><Link to="items/Jännitys"
+                    activeClassName="active"
+                    activeStyle={{fontWeight: 'bold'}}>
+                    Jännitys</Link>
+            </li>
           </ul>
         </div>
       </div>

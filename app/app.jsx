@@ -19,6 +19,8 @@ ReactDOM.render(
       <Route name="ekirjat" path="items/:item" component={Items}/>
       <Route name="spefi" path="items/:item" component={Items}/>
       <Route name="sarjakuvat" path="items/:item" component={Items}/>
+      <Route name="rikos" path="items/:item" component={Items}/>
+      <Route name="jannitys" path="items/:item" component={Items}/>
       <IndexRoute component={Aloitus}/>
     </Route>
   </Router>,

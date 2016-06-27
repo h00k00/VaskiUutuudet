@@ -33,26 +33,16 @@ var BookRow = React.createClass({
 });
 
 var BookTable = React.createClass({
-    getInitialState: function () {
-        return {
-            newData: true,
-        };
-    },
-    componentWillReceiveProps: function(nextProps) {
-        this.setState({
-            newData: true
-        });
-    },
-    componentDidMount: function () {
-        this.setState({
-            newData: false
-        });
-    },
+    // getInitialState: function () {
+    // },
+    // componentWillReceiveProps: function(nextProps) {
+    // },
+    // componentDidMount: function () {
+    // },
     render: function() {
         var rows = [];
         var lastCategory = null;
-        var {newData} = this.state;
-    
+
         function checkLanguage(value) {
             return value.languages[0] == 'fin';
         }
@@ -68,7 +58,7 @@ var BookTable = React.createClass({
     
         var that = this;
         this.props.records.forEach(function(records) {
-            if (that.props.finnishOnly && !checkLanguage(records) && !newData) {
+            if (that.props.finnishOnly && !checkLanguage(records)) {
                 return;
             }
             rows.push(<BookRow records={records} key={records.id} />);
