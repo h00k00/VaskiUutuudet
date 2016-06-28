@@ -38,3 +38,11 @@ input[type="checkbox"] {
 body {
     padding: 20px
 }
+
+.mobile-menu {
+    margin-top: 1.5rem;
+    font-size:1.3rem;
+    color: black;
+    list-style-type: none;
+    text-align: right;
+}

@@ -21,7 +21,7 @@ module.exports = {
                 requestUrl += '&filter[]=~building:0/Vaski/&filter[]=~format:1/Book/eBook/';
                 break;
             case 'Spefi':
-                requestUrl += '&bool0[]=OR&lookfor0[]=fantasiakirjallisuus&lookfor0[]=tieteiskirjallisuus&join=AND&filter[]=~format:0/Book/&filter[]=~building:1/Vaski/1/'
+                requestUrl += '&bool0[]=OR&lookfor0[]=fantasiakirjallisuus&lookfor0[]=tieteiskirjallisuus&lookfor0[]=spekulatiivinen&join=AND&filter[]=~format:0/Book/&filter[]=~building:1/Vaski/1/'
                 break;
             case 'Sarjakuvat':
                 requestUrl += '&bool0[]=OR&lookfor0[]=ykl 85.32&lookfor0[]=ykl 85.35&lookfor0[]=ykl 85.331&join=AND&filter[]=~building:1/Vaski/1/';
