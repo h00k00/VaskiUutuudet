@@ -11,7 +11,6 @@ var Nav = React.createClass({
     },
     handleResize: function () {
         this.setState({windowWidth: window.innerWidth});
-        console.log(this.state.windowWidth);
     },
     componentDidMount: function () {
         window.addEventListener('resize', this.handleResize);
@@ -33,7 +32,8 @@ var Nav = React.createClass({
     navigationLinks: function () {
         return (
             <ul className={this.state.mobileNavVisible ? 'mobile-menu' : 'menu'}>
-                <li><IndexLink to="/" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Aloitus</IndexLink></li>
+                <li><IndexLink to="/" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Aloitus</IndexLink>
+                </li>
                 <li><Link to="items/Kirjat"
                         activeClassName="active"
                         activeStyle={{fontWeight: 'bold'}}>
@@ -81,7 +81,6 @@ var Nav = React.createClass({
     },
     render: function () {
         if (this.state.windowWidth <= 1080){
-            console.log('kapea ikkuna');
             return (
                 <div>
                     <div className = "top-bar" >
@@ -99,10 +98,10 @@ var Nav = React.createClass({
             return (
                 <div className = "top-bar" >
                     < div className = "top-bar-left menu-text" >
-                            Vaski uutuudet
+                        Vaski uutuudet
                     </div>
                     < div className = "top-bar-left" >
-                            {this.navigationLinks()}
+                        {this.navigationLinks()}
                     </div>
                 </div>
             );

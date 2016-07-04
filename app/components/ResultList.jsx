@@ -119,7 +119,7 @@ var ResultList = React.createClass({
     },
     render: function() {
         return (
-            <div>
+            <div id="results">
                 < FilterBar
                     finnishOnly = {this.state.finnishOnly}
                     onUserInput = {this.handleUserInput}/>
