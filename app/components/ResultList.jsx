@@ -1,52 +1,56 @@
-var React = require('react');
+import React, { Component, PropTypes } from 'react';
 
-var AuthorWrapper = React.createClass({
-    render: function () {
+class AuthorWrapper extends Component {
+    render() {
         if (this.props.data)
             return <div>{this.props.data[0].name}</div>
         else
             return <div></div>
     }
-});
+};
 
-var BookRow = React.createClass({
-    render: function() {
+class BookRow  extends Component  {
+    render() {
         var imageSrc = '';
         if (this.props.records.images != undefined) {
             imageSrc = 'https://api.finna.fi' + this.props.records.images[0];
         }
         var itemUrl = 'https://vaski.finna.fi/Record/' + this.props.records.id;
         return (
-          <tr>
-                <td><img src={imageSrc} className="cover"/></td>
-                <td className="book-author">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-3">
+                <img src={imageSrc} className="cover"/>
+              </div>
+              <div className="col-md-3">
                 <AuthorWrapper data = {this.props.records.nonPresenterAuthors}/>
-                </td>
-                <td className="book-title">
-                    <a target="_blank" href={itemUrl}>
-                        {this.props.records.title}
-                    </a>
-                </td>
-          </tr>
+              </div>
+              <div className="col-md-3">
+                <a target="_blank" href={itemUrl}>
+                    {this.props.records.title}
+                </a>
+              </div>
+            </div>
+          </div>
         );
   }
-});
+};
 
-var BookTable = React.createClass({
-    // getInitialState: function () {
-    // },
-    // componentWillReceiveProps: function(nextProps) {
-    // },
-    // componentDidMount: function () {
-    // },
-    render: function() {
+class BookTable  extends Component  {
+    // getInitialState () {
+    // }
+    // componentWillReceiveProps(nextProps) {
+    // }
+    // componentDidMount () {
+    // }
+    render() {
         var rows = [];
         var lastCategory = null;
 
         function checkLanguage(value) {
             return value.languages[0] == 'fin';
         }
-        
+
         function checkCategory(category, value) {
             if (value.subjects != undefined) {
                 return value.subjects.indexOf(category) != -1
@@ -55,7 +59,7 @@ var BookTable = React.createClass({
                 return false;
             }
         }
-    
+
         var that = this;
         this.props.records.forEach(function(records) {
             if (that.props.finnishOnly && !checkLanguage(records)) {
@@ -64,27 +68,27 @@ var BookTable = React.createClass({
             rows.push(<BookRow records={records} key={records.id} />);
         });
         return (
-            <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th><h3>Kirjailija</h3></th>
-                        <th><h3>Teos</h3></th>
-                    </tr>
-                </thead>
-                <tbody>{rows}</tbody>
-            </table>
+          <div>
+            <div className="container">
+                    <div className="row">
+                        <div className="col-md-3"></div>
+                        <div className="col-md-3"><h3>Kirjailija</h3></div>
+                        <div className="col-md-3"><h3>Teos</h3></div>
+                    </div>
+            </div>
+            {rows}
+            </div>
         );
     }
-});
+};
 
-var FilterBar = React.createClass({
-    handleChange: function () {
+class FilterBar  extends Component  {
+    handleChange () {
         this.props.onUserInput(
             this.refs.finnishOnly.checked
         )
-    },
-    render: function() {
+    }
+    render() {
         return (
             <form>
                 <p>
@@ -100,24 +104,25 @@ var FilterBar = React.createClass({
             </form>
         );
     }
-});
+};
 
-var ResultList = React.createClass({
-    getInitialState: function () {
-        return {
-            finnishOnly: false,
-        };
-    },
-    componentWillReceiveProps: function(nextProps) {
-    },
-    componentDidMount: function () {
-    },
-    handleUserInput: function (finnishOnly) {
+class ResultList  extends Component  {
+  constructor(props) {
+    super(props);
+      this.state = {
+        finnishOnly: false,
+      };
+  }
+    componentWillReceiveProps(nextProps) {
+    }
+    componentDidMount () {
+    }
+    handleUserInput (finnishOnly) {
         this.setState({
             finnishOnly: finnishOnly,
         });
-    },
-    render: function() {
+    }
+    render() {
         return (
             <div id="results">
                 < FilterBar
@@ -129,6 +134,6 @@ var ResultList = React.createClass({
             </div>
         );
     }
-});
+};
 
-module.exports = ResultList;
+export default ResultList;

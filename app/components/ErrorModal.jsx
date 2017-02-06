@@ -1,18 +1,14 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var ReactDOMServer = require('react-dom/server');
+import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
+import ReactDOMServer from 'react-dom/server';
 
-var ErrorModal = React.createClass ({
-  getDefaultProps: function () {
+class ErrorModal extends Component {
+  getDefaultProps() {
     return {
       title: 'Error'
     };
-  },
-  propTypes: {
-    title: React.PropTypes.string,
-    message: React.PropTypes.string.isRequired
-  },
-  componentDidMount: function () {
+  }
+  componentDidMount() {
     var {title, message} = this.props;
     var modalMarkUp = (
       <div id="error-modal" className="reveal tiny text-center" data-reveal="">
@@ -22,36 +18,27 @@ var ErrorModal = React.createClass ({
           <button className="button hollow" data-close="">OK</button>
         </p>
       </div>
-    );
-    
+    )
+
     var $modal = $(ReactDOMServer.renderToString(modalMarkUp));
     $(ReactDOM.findDOMNode(this)).html($modal)
 
     var modal = new Foundation.Reveal($('#error-modal'));
     modal.open();
-  },
-  render: function () {
-    
+  }
+  render() {
+
     return (
       <div>
       </div>
     )
-    
-  }
-});
 
-module.exports = ErrorModal;
-                                              
-                                              
-                                              
-                                              
-                                              
-                                              
-                                              
-                                              
-                                              
-                                              
-                                              
-                                              
-                                              
-                                              
+  }
+}
+
+ErrorModal.propTypes = {
+  title: React.PropTypes.string,
+  message: React.PropTypes.string.isRequired
+};
+
+export default ErrorModal;

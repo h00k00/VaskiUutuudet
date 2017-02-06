@@ -1,4 +1,4 @@
-var jQuery = require('jquery');
+import jQuery  from 'jquery';
 
 const FINNA_API_BASE_URL = 'https://api.finna.fi/v1/search?';
 
@@ -9,8 +9,8 @@ const PARAMS = {
     sort: 'main_date_str desc'
 };
 
-module.exports = {
-    getBooks: function(type) {
+export default  {
+    getBooks(type) {
         var requestUrl = `${FINNA_API_BASE_URL}` + $.param(PARAMS);
 
         switch (type) {
@@ -35,9 +35,9 @@ module.exports = {
             case 'all':
                 break;
         }
-        
+
         console.log(requestUrl);
-        
+
         return $.ajax({
             url: requestUrl,
             dataType: 'jsonp'

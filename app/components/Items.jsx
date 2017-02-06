@@ -1,24 +1,25 @@
-var React = require('react');
-var ResultList = require('ResultList');
-var apiFinna = require('apiFinna');
+import React, { Component, PropTypes } from 'react';
+import ResultList from 'ResultList';
+import apiFinna from 'apiFinna';
 
-var Items = React.createClass({
-    getInitialState: function () {
-        return {
-            isLoading : false,
-            records: undefined,
-            title: this.props.params.item,
-            items: this.props.params.item
-        };
-    },
-    handleSearch: function() {
+class Items extends Component {
+  constructor(props) {
+    super(props);
+      this.state = {
+        isLoading : false,
+        records: undefined,
+        title: this.props.params.item,
+        items: this.props.params.item
+      };
+  }
+    handleSearch() {
         var that = this;
-        
+
        this.setState({
           isLoading: true,
           records: undefined
         });
-        
+
         console.log('handleSearch');
 
         apiFinna.getBooks(this.state.title).then(function(data) {
@@ -33,14 +34,14 @@ var Items = React.createClass({
               records: undefined
           });
         })
-    },
-    componentWillReceiveProps: function(nextProps) {
+    }
+    componentWillReceiveProps(nextProps) {
         var that = this;
-        
+
         if (nextProps.params.item == this.state.title) {
             return;
         }
-        
+
         this.setState({
             isLoading: true,
             records: undefined,
@@ -60,17 +61,17 @@ var Items = React.createClass({
             records: undefined
           });
         })
-    },
-    componentWillUpdate: function () {
-    },
-    componentDidMount: function () {
+    }
+    componentWillUpdate() {
+    }
+    componentDidMount() {
         var that = this;
-            
+
         this.setState({
           isLoading: true,
           records: undefined
         });
-        
+
         apiFinna.getBooks(this.state.title).then(function (data) {
           that.setState({
             isLoading: false,
@@ -83,8 +84,8 @@ var Items = React.createClass({
             records: undefined
           });
         })
-    },
-    render: function () {
+    }
+    render() {
         var {isLoading, records} = this.state;
 
         function renderList() {
@@ -95,7 +96,7 @@ var Items = React.createClass({
                 return <ResultList records={records}/>;
             }
         }
-    
+
         return (
             <div>
                 < h1 className = "text-center page-title" >
@@ -105,6 +106,6 @@ var Items = React.createClass({
             </div>
         )
     }
-});
+}
 
-module.exports = Items;
+export default Items;

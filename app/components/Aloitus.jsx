@@ -1,31 +1,33 @@
-var React = require('react');
-var ErrorModal = require('ErrorModal');
-var apiFinna = require('apiFinna');
+import React, { Component, PropTypes }  from 'react';
+import ErrorModal from 'ErrorModal';
+import apiFinna from 'apiFinna';
 
-var Aloitus = React.createClass({
-  getInitialState: function () {
-    return {
-      isLoading : false
-    };
-  },
-  componentDidMount: function () {
+class Aloitus extends Component {
+  constructor(props) {
+    super(props);
+      this.state = {
+        isLoading : false,
+      };
+  }
+  componentDidMount() {
     var location = this.props.location.query.location;
-    
+
     if (location && location.length > 0) {
       this.handleSearch(location);
       window.location.hash = '#/';
     }
-  },
-  componentWillReceiveProps: function (newProps) {
+  }
+  componentWillReceiveProps(newProps) {
     var location = newProps.location.query.location;
-    
+
     if (location && location.length > 0) {
       this.handleSearch(location);
       window.location.hash = '#/';
     }
-  },
-  render: function () {
-    var {isLoading, location, temp, errorMessage} = this.state;
+  }
+  render() {
+    var {location, temp, errorMessage} = this.state;
+    const isLoading = this.props.isLoading;
 
     function renderMessage (){
       if (isLoading) {
@@ -34,7 +36,7 @@ var Aloitus = React.createClass({
         return <p></p>;
       }
     }
-    
+
     function renderError (){
       if (typeof errorMessage == 'string') {
         return (
@@ -42,7 +44,7 @@ var Aloitus = React.createClass({
         )
       }
     }
-                                         
+
     return (
       <div>
         <h1 className="text-center page-title">Vaski uutuudet</h1>
@@ -51,6 +53,6 @@ var Aloitus = React.createClass({
       </div>
     )
   }
-})
-                                         ;
-module.exports = Aloitus;
+}
+
+export default Aloitus;

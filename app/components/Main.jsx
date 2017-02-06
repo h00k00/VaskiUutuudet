@@ -1,5 +1,5 @@
-var React = require('react');
-var Nav = require('Nav');
+import React from 'react';
+import Nav from 'Nav';
 
 var Main = (props) => {
   return (
@@ -10,4 +10,4 @@ var Main = (props) => {
   );
 };
 
-module.exports = Main;
+export default Main;

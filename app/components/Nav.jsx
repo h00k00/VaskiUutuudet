@@ -1,37 +1,51 @@
 import MobileNav from 'react-icons/lib/io/navicon-round';
-var React = require('react');
-var {Link,IndexLink} = require('react-router');
+import React, { Component, PropTypes } from 'react';
+import {Link,IndexLink}from 'react-router';
 
-var Nav = React.createClass({
-    getInitialState: function () {
-        return {
+class Nav extends Component {
+    constructor(props) {
+      super(props);
+        this.state = {
             windowWidth: window.innerWidth,
             mobileNavVisible: false
         };
-    },
-    handleResize: function () {
+    }
+    handleResize() {
         this.setState({windowWidth: window.innerWidth});
-    },
-    componentDidMount: function () {
+    }
+    componentDidMount() {
         window.addEventListener('resize', this.handleResize);
-    },
-    componentWillUnmount: function () {
+    }
+    componentWillUnmount() {
         window.removeEventListener('resize', this.handleResize);
-    },
-    onSearch: function (e) {
+    }
+    onSearch(e) {
         e.preventDefault;
-    
+
         var location = this.refs.search.value;
         var encodedLocation = encodeURIComponent(location);
-    
+
         if (location.length > 0) {
             this.refs.search.value = '';
             window.location.hash = '#/?location=' + encodedLocation;
         }
-    },
-    navigationLinks: function () {
+    }
+    navigationLinks() {
         return (
-            <ul className={this.state.mobileNavVisible ? 'mobile-menu' : 'menu'}>
+          <nav className="navbar navbar-inverse">
+            <div className="container-fluid">
+              <div className="navbar-header">
+              <div className="navbar-brand">
+                Vaski uutuudet
+              </div>
+              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span className="sr-only">Toggle navigation</span>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+              </button>
+              </div>
+            <ul className="nav navbar-nav">
                 <li><IndexLink to="/" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Aloitus</IndexLink>
                 </li>
                 <li><Link to="items/Kirjat"
@@ -65,21 +79,23 @@ var Nav = React.createClass({
                         Jännitys</Link>
                 </li>
             </ul>
+            </div>
+            </nav>
         );
-    },
-    renderMobileNav: function () {
+    }
+    renderMobileNav() {
         if(this.state.mobileNavVisible) {
             return this.navigationLinks();
         }
-    },
-    handleNavClick: function () {
+    }
+    handleNavClick() {
         if(!this.state.mobileNavVisible) {
             this.setState({mobileNavVisible: true});
         } else {
             this.setState({mobileNavVisible: false});
         }
-    },
-    render: function () {
+    }
+    render() {
         if (this.state.windowWidth <= 1080){
             return (
                 <div>
@@ -107,6 +123,6 @@ var Nav = React.createClass({
             );
         }
     }
-});
+};
 
-module.exports = Nav;
+export default Nav;
