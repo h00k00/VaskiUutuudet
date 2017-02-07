@@ -1,61 +1,63 @@
-.filter-bar {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
 .page-title {
   color: purple;
   margin-top: 4.5rem;
   margin-bottom: 0.5rem;
 }
-  
+
 input[type=search] {
   box-shadow: none;
 }
 
 .cover {
-    width: 80px;
+  width: 80px;
 }
 
 .book-author {
-    font-size: 1.3rem;
+  font-size: 1.3rem;
 }
 
 .book-title {
-    font-size: 1.3rem;
+  font-size: 1.3rem;
 }
 
 input[type="checkbox"] {
-    width:1.3rem;
-    height:1.3rem;
+  width:1.3rem;
+  height:1.3rem;
 }
+
 .checkbox-text {
-    font-size:1.3rem;
-    margin-left: 5px;
-    margin-right:15px;
+  margin-left: 5px;
+  margin-right:15px;
 }
 
 body{
 	font:17px/1.3 'Open Sans', sans-serif;
 	color: #5e5b64;
 	text-align:left;
-    padding: 0px
+  padding: 0px
 }
 
 #results {
-    padding: 1.5rem;
+  padding: 1.5rem;
 }
 
-.top-bar {
-    top: 0;
-    position: fixed;
-    width: 100%;
+.title {
+  line-height: 32px;
+  font-weight: bold;
 }
 
-.mobile-menu {
-    margin-top: 1.5rem;
-    font-size:1.3rem;
-    color: black;
-    list-style-type: none;
-    text-align: right;
+.text {
+  margin-bottom: 5px;
+}
+
+.image-container {
+  display: inline-block;
+  vertical-align: top;
+  width: 80px;
+  margin-right: 8px;
+}
+.content-container {
+  display: inline-block;
+  margin-left: 8px;
+  max-width: 85%;
 }

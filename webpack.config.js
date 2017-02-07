@@ -1,9 +1,10 @@
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
   entry: [
-    'script!jquery/dist/jquery.min.js',
-    './app/app.jsx'
+    'script-loader!jquery/dist/jquery.min.js',
+    './app/app.js'
   ],
   externals: {
     jquery: 'jQuery'
@@ -19,18 +20,17 @@ module.exports = {
    filename: './public/bundle.js'
   },
   resolve: {
-    root: __dirname,
     alias: {
-      Main: 'app/components/Main.jsx',
-      Nav: 'app/components/Nav.jsx',
-      Aloitus: 'app/components/Aloitus.jsx',
-      ResultList: 'app/components/ResultList.jsx',
-      Items: 'app/components/Items.jsx',
-      ErrorModal: 'app/components/ErrorModal.jsx',
-      apiFinna: 'app/api/apiFinna.jsx',
-      applicationStyles: 'app/styles/app.css'
+      Main: path.resolve(__dirname, 'app/components/Main.js'),
+      Nav: path.resolve(__dirname, 'app/components/Nav.js'),
+      Aloitus: path.resolve(__dirname, 'app/components/Aloitus.js'),
+      ResultList: path.resolve(__dirname, 'app/components/ResultList.js'),
+      Items: path.resolve(__dirname, 'app/components/Items.js'),
+      ErrorModal: path.resolve(__dirname, 'app/components/ErrorModal.js'),
+      apiFinna: path.resolve(__dirname, 'app/api/apiFinna.js'),
+      applicationStyles: path.resolve(__dirname, 'app/styles/app.css')
     },
-    extensions: ['', '.js', '.jsx']
+    extensions: ['.js', '.jsx']
   },
   module: {
    loaders: [
