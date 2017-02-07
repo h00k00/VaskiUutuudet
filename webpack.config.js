@@ -1,9 +1,8 @@
-var webpack = require('webpack');
-var path = require('path');
+const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
   entry: [
-    'script-loader!jquery/dist/jquery.min.js',
     './app/app.js'
   ],
   externals: {
@@ -12,7 +11,8 @@ module.exports = {
   plugins: [
     new webpack.ProvidePlugin({
       '$': 'jquery',
-      'jQuery': 'jquery'
+      'jQuery': 'jquery',
+      'jquery': 'jquery'
     })
   ],
   output: {
@@ -34,14 +34,14 @@ module.exports = {
   },
   module: {
    loaders: [
-     {
+    {
        loader: 'babel-loader',
        query: {
          presets: ['react', 'es2015', 'stage-0']
        },
-       test: /\.jsx?$/,
+       test: /\.js?$/,
        exclude: /(node_modules|bower_components)/
-     }
+    }
    ]
   },
   devtool: 'cheap-module-eval-source-map'

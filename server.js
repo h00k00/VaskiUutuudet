@@ -13,7 +13,7 @@ app.use(function (req, res, next){
   }
 });
 
-app.use(express.static(__dirname + 'public'));
+app.use(express.static('public'));
 
 app.listen(PORT, function () {
     console.log('Server is up and listening to port ' + PORT);
