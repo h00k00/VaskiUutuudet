@@ -9,8 +9,8 @@ class ErrorModal extends Component {
     };
   }
   componentDidMount() {
-    var {title, message} = this.props;
-    var modalMarkUp = (
+    let {title, message} = this.props;
+    let modalMarkUp = (
       <div id="error-modal" className="reveal tiny text-center" data-reveal="">
         <h4>{title}</h4>
         <p>{message}</p>
@@ -20,10 +20,10 @@ class ErrorModal extends Component {
       </div>
     )
 
-    var $modal = $(ReactDOMServer.renderToString(modalMarkUp));
+    let $modal = $(ReactDOMServer.renderToString(modalMarkUp));
     $(ReactDOM.findDOMNode(this)).html($modal)
 
-    var modal = new Foundation.Reveal($('#error-modal'));
+    let modal = new Foundation.Reveal($('#error-modal'));
     modal.open();
   }
   render() {

@@ -13,7 +13,7 @@ class Items extends Component {
       };
   }
     handleSearch() {
-        var that = this;
+        let that = this;
 
        this.setState({
           isLoading: true,
@@ -36,7 +36,7 @@ class Items extends Component {
         })
     }
     componentWillReceiveProps(nextProps) {
-        var that = this;
+        let that = this;
 
         if (nextProps.params.item == this.state.title) {
             return;
@@ -65,7 +65,7 @@ class Items extends Component {
     componentWillUpdate() {
     }
     componentDidMount() {
-        var that = this;
+        let that = this;
 
         this.setState({
           isLoading: true,
@@ -86,7 +86,7 @@ class Items extends Component {
         })
     }
     render() {
-        var {isLoading, records} = this.state;
+        let {isLoading, records} = this.state;
 
         function renderList() {
             if (isLoading) {

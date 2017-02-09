@@ -11,11 +11,11 @@ class AuthorWrapper extends Component {
 
 class BookRow  extends Component  {
     render() {
-        var imageSrc = '';
+        let imageSrc = '';
         if (this.props.records.images != undefined) {
             imageSrc = 'https://api.finna.fi' + this.props.records.images[0];
         }
-        var itemUrl = 'https://vaski.finna.fi/Record/' + this.props.records.id;
+        let itemUrl = 'https://vaski.finna.fi/Record/' + this.props.records.id;
         return (
           <div className="container">
             <li className="list-group-item">
@@ -42,8 +42,8 @@ class BookTable  extends Component  {
     // componentDidMount () {
     // }
     render() {
-        var rows = [];
-        var lastCategory = null;
+        let rows = [];
+        let lastCategory = null;
 
         function checkLanguage(value) {
             return value.languages[0] == 'fin';
@@ -58,7 +58,7 @@ class BookTable  extends Component  {
             }
         }
 
-        var that = this;
+        let that = this;
         this.props.records.forEach(function(records) {
             if (that.props.finnishOnly && !checkLanguage(records)) {
                 return;

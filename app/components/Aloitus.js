@@ -10,7 +10,7 @@ class Aloitus extends Component {
       };
   }
   componentDidMount() {
-    var location = this.props.location.query.location;
+    let location = this.props.location.query.location;
 
     if (location && location.length > 0) {
       this.handleSearch(location);
@@ -18,7 +18,7 @@ class Aloitus extends Component {
     }
   }
   componentWillReceiveProps(newProps) {
-    var location = newProps.location.query.location;
+    let location = newProps.location.query.location;
 
     if (location && location.length > 0) {
       this.handleSearch(location);
@@ -26,7 +26,7 @@ class Aloitus extends Component {
     }
   }
   render() {
-    var {location, temp, errorMessage} = this.state;
+    let {location, temp, errorMessage} = this.state;
     const isLoading = this.props.isLoading;
 
     function renderMessage (){

@@ -11,7 +11,7 @@ const PARAMS = {
 
 export default  {
     getBooks(type) {
-        var requestUrl = `${FINNA_API_BASE_URL}` + $.param(PARAMS);
+        let requestUrl = `${FINNA_API_BASE_URL}` + $.param(PARAMS);
 
         switch (type) {
             case 'Kirjat':
@@ -41,8 +41,9 @@ export default  {
         return $.ajax({
             url: requestUrl,
             dataType: 'jsonp'
-        }).then(function(data) {
-            return data;
-        });
+        }).then(data => data);
+        // }).then(function(data) {
+        //     return data;
+        // });
     }
 }

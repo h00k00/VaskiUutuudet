@@ -85,8 +85,8 @@ class Nav extends Component {
     onSearch(e) {
         e.preventDefault;
 
-        var location = this.refs.search.value;
-        var encodedLocation = encodeURIComponent(location);
+        let location = this.refs.search.value;
+        let encodedLocation = encodeURIComponent(location);
 
         if (location.length > 0) {
             this.refs.search.value = '';

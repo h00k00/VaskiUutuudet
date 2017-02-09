@@ -1,5 +1,5 @@
 .page-title {
-  color: purple;
+  color: white !important;
   margin-top: 4.5rem;
   margin-bottom: 0.5rem;
 }
@@ -28,12 +28,14 @@ input[type="checkbox"] {
 .checkbox-text {
   margin-left: 5px;
   margin-right:15px;
+  color: white !important;
 }
 
 body{
 	font:17px/1.3 'Open Sans', sans-serif;
 	text-align:left;
-  padding: 0px
+  padding: 0px;
+  background-color: black;
 }
 
 #results {
@@ -47,6 +49,10 @@ body{
 
 .text {
   margin-bottom: 5px;
+}
+
+.text-center {
+  color: white !important;
 }
 
 .image-container {
