@@ -1,6 +1,6 @@
 import MobileNav from 'react-icons/lib/io/navicon-round';
 import React, { Component, PropTypes } from 'react';
-import {Link,IndexLink}from 'react-router';
+import {Link, IndexLink}from 'react-router';
 
 class NavBar extends Component {
   render() {
@@ -55,7 +55,7 @@ class NavBar extends Component {
               </ul>
             </div>
           </div>
-          </nav>
+        </nav>
       );
   }
 }

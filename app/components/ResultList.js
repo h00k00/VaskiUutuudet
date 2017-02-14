@@ -35,12 +35,6 @@ class BookRow  extends Component  {
 };
 
 class BookTable  extends Component  {
-    // getInitialState () {
-    // }
-    // componentWillReceiveProps(nextProps) {
-    // }
-    // componentDidMount () {
-    // }
     render() {
         let rows = [];
         let lastCategory = null;

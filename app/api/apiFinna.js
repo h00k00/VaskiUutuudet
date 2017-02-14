@@ -42,8 +42,5 @@ export default  {
             url: requestUrl,
             dataType: 'jsonp'
         }).then(data => data);
-        // }).then(function(data) {
-        //     return data;
-        // });
     }
 }
