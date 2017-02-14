@@ -5,8 +5,8 @@ const FINNA_API_BASE_URL = 'https://api.finna.fi/v1/search?';
 const PARAMS = {
     type: 'AllFields',
     limit: 100,
-    filter: ['last_indexed:[NOW-32DAYS/DAY TO NOW]', '~major_genre_str_mv:fiction'],
-    sort: 'main_date_str'
+    filter: ['first_indexed:[NOW-1MONTHS TO NOW]', '~major_genre_str_mv:fiction'],
+    sort: 'main_date_str desc'
 };
 
 export default  {

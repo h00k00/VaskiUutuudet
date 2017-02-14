@@ -47,7 +47,7 @@ class Aloitus extends Component {
 
     return (
       <div>
-        <h1>Vaski uutuudet</h1>
+        <h1 className="text-center page-title">Vaski uutuudet</h1>
         {renderMessage()}
         {renderError()}
       </div>
