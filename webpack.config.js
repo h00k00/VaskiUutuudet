@@ -33,11 +33,11 @@ module.exports = {
     extensions: ['.js', '.jsx']
   },
   module: {
-   loaders: [
+   rules: [
     {
        loader: 'babel-loader',
        query: {
-         presets: ['react', 'es2015', 'stage-0']
+         presets: ['react', 'env']
        },
        test: /\.js?$/,
        exclude: /(node_modules|bower_components)/
